@@ -12,6 +12,13 @@ export class AppComponent {
   formulario: FormGroup;
 
   constructor(frmBuilder: FormBuilder){
-    this.formulario = this.frmBuilder.group();
+    this.formulario = frmBuilder.group( {
+      nombre: ['nombre por defecto', Validators.required],
+      apellido: ['apellido por defecto', Validators.required],
+      email: ['tumail@dominio', [Validators.required, Validators.pattern('[^ @]*@[^ @]*')]],
+    } );
+  }
+  onSubmit(parametro) {
+    console.log(parametro);
   }
 }
